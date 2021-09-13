@@ -30,31 +30,32 @@ namespace ArquitecturaHardware
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmb_COM = new System.Windows.Forms.ComboBox();
-            this.cmb_baudrate = new System.Windows.Forms.ComboBox();
-            this.pb_conexion = new System.Windows.Forms.ProgressBar();
-            this.lbl_conexion = new System.Windows.Forms.Label();
-            this.btn_conectar = new System.Windows.Forms.Button();
             this.btn_desconectar = new System.Windows.Forms.Button();
+            this.btn_conectar = new System.Windows.Forms.Button();
+            this.lbl_conexion = new System.Windows.Forms.Label();
+            this.pb_conexion = new System.Windows.Forms.ProgressBar();
+            this.cmb_baudrate = new System.Windows.Forms.ComboBox();
+            this.cmb_COM = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pbox_light_1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pbox_light_2 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pbox_light_3 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pbox_light_4 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pbox_light_3 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pbox_light_2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_light_1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbox_light_2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbox_light_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_light_4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_light_3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_light_2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -83,23 +84,41 @@ namespace ArquitecturaHardware
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Conexión";
             // 
-            // label2
+            // btn_desconectar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Baud Rate";
+            this.btn_desconectar.Location = new System.Drawing.Point(134, 137);
+            this.btn_desconectar.Name = "btn_desconectar";
+            this.btn_desconectar.Size = new System.Drawing.Size(100, 29);
+            this.btn_desconectar.TabIndex = 7;
+            this.btn_desconectar.Text = "Desconectar";
+            this.btn_desconectar.UseVisualStyleBackColor = true;
+            this.btn_desconectar.Click += new System.EventHandler(this.btn_desconectar_Click);
             // 
-            // cmb_COM
+            // btn_conectar
             // 
-            this.cmb_COM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_COM.FormattingEnabled = true;
-            this.cmb_COM.Location = new System.Drawing.Point(78, 26);
-            this.cmb_COM.Name = "cmb_COM";
-            this.cmb_COM.Size = new System.Drawing.Size(156, 21);
-            this.cmb_COM.TabIndex = 2;
+            this.btn_conectar.Location = new System.Drawing.Point(9, 137);
+            this.btn_conectar.Name = "btn_conectar";
+            this.btn_conectar.Size = new System.Drawing.Size(100, 29);
+            this.btn_conectar.TabIndex = 6;
+            this.btn_conectar.Text = "Conectar";
+            this.btn_conectar.UseVisualStyleBackColor = true;
+            this.btn_conectar.Click += new System.EventHandler(this.btn_conectar_Click);
+            // 
+            // lbl_conexion
+            // 
+            this.lbl_conexion.AutoSize = true;
+            this.lbl_conexion.Location = new System.Drawing.Point(74, 112);
+            this.lbl_conexion.Name = "lbl_conexion";
+            this.lbl_conexion.Size = new System.Drawing.Size(102, 13);
+            this.lbl_conexion.TabIndex = 5;
+            this.lbl_conexion.Text = "DESCONNECTED!!";
+            // 
+            // pb_conexion
+            // 
+            this.pb_conexion.Location = new System.Drawing.Point(9, 87);
+            this.pb_conexion.Name = "pb_conexion";
+            this.pb_conexion.Size = new System.Drawing.Size(225, 23);
+            this.pb_conexion.TabIndex = 4;
             // 
             // cmb_baudrate
             // 
@@ -114,41 +133,23 @@ namespace ArquitecturaHardware
             this.cmb_baudrate.Size = new System.Drawing.Size(156, 21);
             this.cmb_baudrate.TabIndex = 3;
             // 
-            // pb_conexion
+            // cmb_COM
             // 
-            this.pb_conexion.Location = new System.Drawing.Point(9, 87);
-            this.pb_conexion.Name = "pb_conexion";
-            this.pb_conexion.Size = new System.Drawing.Size(225, 23);
-            this.pb_conexion.TabIndex = 4;
+            this.cmb_COM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_COM.FormattingEnabled = true;
+            this.cmb_COM.Location = new System.Drawing.Point(78, 26);
+            this.cmb_COM.Name = "cmb_COM";
+            this.cmb_COM.Size = new System.Drawing.Size(156, 21);
+            this.cmb_COM.TabIndex = 2;
             // 
-            // lbl_conexion
+            // label2
             // 
-            this.lbl_conexion.AutoSize = true;
-            this.lbl_conexion.Location = new System.Drawing.Point(74, 112);
-            this.lbl_conexion.Name = "lbl_conexion";
-            this.lbl_conexion.Size = new System.Drawing.Size(102, 13);
-            this.lbl_conexion.TabIndex = 5;
-            this.lbl_conexion.Text = "DESCONNECTED!!";
-            // 
-            // btn_conectar
-            // 
-            this.btn_conectar.Location = new System.Drawing.Point(9, 137);
-            this.btn_conectar.Name = "btn_conectar";
-            this.btn_conectar.Size = new System.Drawing.Size(100, 29);
-            this.btn_conectar.TabIndex = 6;
-            this.btn_conectar.Text = "Conectar";
-            this.btn_conectar.UseVisualStyleBackColor = true;
-            this.btn_conectar.Click += new System.EventHandler(this.btn_conectar_Click);
-            // 
-            // btn_desconectar
-            // 
-            this.btn_desconectar.Location = new System.Drawing.Point(134, 137);
-            this.btn_desconectar.Name = "btn_desconectar";
-            this.btn_desconectar.Size = new System.Drawing.Size(100, 29);
-            this.btn_desconectar.TabIndex = 7;
-            this.btn_desconectar.Text = "Desconectar";
-            this.btn_desconectar.UseVisualStyleBackColor = true;
-            this.btn_desconectar.Click += new System.EventHandler(this.btn_desconectar_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Baud Rate";
             // 
             // pbox_light_1
             // 
@@ -183,37 +184,27 @@ namespace ArquitecturaHardware
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Luces";
             // 
-            // label3
+            // label6
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(86, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Luz 1";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(470, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Luz 4";
             // 
-            // label4
+            // pbox_light_4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(214, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Luz 2";
-            // 
-            // pbox_light_2
-            // 
-            this.pbox_light_2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbox_light_2.Image = global::ArquitecturaHardware.Properties.Resources.switch_off;
-            this.pbox_light_2.Location = new System.Drawing.Point(170, 38);
-            this.pbox_light_2.Name = "pbox_light_2";
-            this.pbox_light_2.Size = new System.Drawing.Size(122, 128);
-            this.pbox_light_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbox_light_2.TabIndex = 9;
-            this.pbox_light_2.TabStop = false;
-            this.pbox_light_2.Click += new System.EventHandler(this.pbox_light_2_Click);
+            this.pbox_light_4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbox_light_4.Image = global::ArquitecturaHardware.Properties.Resources.switch_off;
+            this.pbox_light_4.Location = new System.Drawing.Point(426, 38);
+            this.pbox_light_4.Name = "pbox_light_4";
+            this.pbox_light_4.Size = new System.Drawing.Size(122, 128);
+            this.pbox_light_4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbox_light_4.TabIndex = 13;
+            this.pbox_light_4.TabStop = false;
+            this.pbox_light_4.Click += new System.EventHandler(this.pbox_light_4_Click);
             // 
             // label5
             // 
@@ -237,27 +228,37 @@ namespace ArquitecturaHardware
             this.pbox_light_3.TabStop = false;
             this.pbox_light_3.Click += new System.EventHandler(this.pbox_light_3_Click);
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(470, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Luz 4";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(214, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Luz 2";
             // 
-            // pbox_light_4
+            // pbox_light_2
             // 
-            this.pbox_light_4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbox_light_4.Image = global::ArquitecturaHardware.Properties.Resources.switch_off;
-            this.pbox_light_4.Location = new System.Drawing.Point(426, 38);
-            this.pbox_light_4.Name = "pbox_light_4";
-            this.pbox_light_4.Size = new System.Drawing.Size(122, 128);
-            this.pbox_light_4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbox_light_4.TabIndex = 13;
-            this.pbox_light_4.TabStop = false;
-            this.pbox_light_4.Click += new System.EventHandler(this.pbox_light_4_Click);
+            this.pbox_light_2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbox_light_2.Image = global::ArquitecturaHardware.Properties.Resources.switch_off;
+            this.pbox_light_2.Location = new System.Drawing.Point(170, 38);
+            this.pbox_light_2.Name = "pbox_light_2";
+            this.pbox_light_2.Size = new System.Drawing.Size(122, 128);
+            this.pbox_light_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbox_light_2.TabIndex = 9;
+            this.pbox_light_2.TabStop = false;
+            this.pbox_light_2.Click += new System.EventHandler(this.pbox_light_2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(86, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Luz 1";
             // 
             // serialPort1
             // 
@@ -270,6 +271,7 @@ namespace ArquitecturaHardware
             this.ClientSize = new System.Drawing.Size(913, 208);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Luces";
@@ -280,9 +282,9 @@ namespace ArquitecturaHardware
             ((System.ComponentModel.ISupportInitialize)(this.pbox_light_1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbox_light_2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbox_light_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_light_4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_light_3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_light_2)).EndInit();
             this.ResumeLayout(false);
 
         }
