@@ -29,14 +29,10 @@ namespace ArquitecturaHardware
             btn_desconectar.Enabled = false;
             cmb_COM.SelectedIndex = 0;
             cmb_baudrate.SelectedIndex = 0;
-           
-            
-
         }
 
         private void btn_conectar_Click(object sender, EventArgs e)
         {
-
             serialPort1.PortName = cmb_COM.Text;
             serialPort1.BaudRate = Convert.ToInt32(cmb_baudrate.Text);
             serialPort1.Open();
@@ -51,15 +47,13 @@ namespace ArquitecturaHardware
                 btn_desconectar.Enabled = true;
                 groupBox2.Enabled = true;
                 EscucharArduino();
-            }
-            
+            }            
         }
 
         private void btn_desconectar_Click(object sender, EventArgs e)
         {
             if (serialPort1.IsOpen)
-            {
-                
+            {                
                 serialPort1.Close();
                 pb_conexion.Value = 0;
                 lbl_conexion.ForeColor = Color.Black;
@@ -73,8 +67,7 @@ namespace ArquitecturaHardware
                 pbox_light_2.Image = ArquitecturaHardware.Properties.Resources.switch_off;
                 pbox_light_3.Image = ArquitecturaHardware.Properties.Resources.switch_off;
                 pbox_light_4.Image = ArquitecturaHardware.Properties.Resources.switch_off;
-            }
-                
+            }                
         }
 
         private void pbox_light_1_Click(object sender, EventArgs e)
@@ -116,7 +109,7 @@ namespace ArquitecturaHardware
         
         private void ChangeStatus(object sender, EventArgs e)
         {
-            if (!Start) {
+            if (!Start && SerialDataIn != "") {
                 if (SerialDataIn.Substring(0, 1) == "4") 
                 {
                     light_4 = !light_4;
@@ -176,16 +169,17 @@ namespace ArquitecturaHardware
 
         void EscucharArduino()
         {
+
             try
             {
                 if (serialPort1.IsOpen)
                 {
                     serialPort1.Write("S");
                     Estado = serialPort1.ReadLine();
-                    light_1 = Convert.ToBoolean(Convert.ToInt32(Estado.Substring(3, 1)));
-                    light_2 = Convert.ToBoolean(Convert.ToInt32(Estado.Substring(2, 1)));
-                    light_3 = Convert.ToBoolean(Convert.ToInt32(Estado.Substring(1, 1)));
-                    light_4 = Convert.ToBoolean(Convert.ToInt32(Estado.Substring(0, 1)));
+                    light_1 = Convert.ToBoolean(Convert.ToInt32(Estado.Substring(0, 1)));
+                    light_2 = Convert.ToBoolean(Convert.ToInt32(Estado.Substring(1, 1)));
+                    light_3 = Convert.ToBoolean(Convert.ToInt32(Estado.Substring(2, 1)));
+                    light_4 = Convert.ToBoolean(Convert.ToInt32(Estado.Substring(3, 1)));
 
                     if (!light_1)
                         pbox_light_1.Image = ArquitecturaHardware.Properties.Resources.switch_off;
